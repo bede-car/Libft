@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 22:35:35 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/25 22:10:59 by bede-car         ###   ########.fr       */
+/*   Created: 2022/06/16 20:33:06 by bede-car          #+#    #+#             */
+/*   Updated: 2022/06/26 04:54:27 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	char	*sub;
+	size_t	len_s;
+	size_t	len_max;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (s < d)
-	{
-		while (n--)
-			d[n] = s[n];
-	}
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (len_s < start)
+		return (ft_strdup(""));
+	if ((len_s - start) <= len)
+		len_max = len_s - start;
 	else
-	{
-		while (n--)
-			*d++ = *s++;
-	}
-	return (dest);
+		len_max = len;
+	sub = malloc(len_max + 1);
+	if (!sub)
+		return (NULL);
+	ft_strlcpy(sub, &s[start], len_max + 1);
+	return (sub);
 }

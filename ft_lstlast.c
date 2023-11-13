@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 04:29:20 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/25 22:47:10 by bede-car         ###   ########.fr       */
+/*   Created: 2022/06/24 00:35:50 by bede-car          #+#    #+#             */
+/*   Updated: 2022/06/26 01:18:16 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char	*new_str;
-	size_t	len_total;
-
-	len_total = (ft_strlen(s1) + ft_strlen(s2)) + 1;
-	new_str = malloc (len_total);
-	if (!new_str)
+	if (!lst)
 		return (NULL);
-	ft_strlcpy(new_str, s1, (ft_strlen(s1) + 1));
-	ft_strlcat(new_str, s2, len_total);
-	return (new_str);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

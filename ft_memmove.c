@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 00:38:18 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/26 00:25:28 by bede-car         ###   ########.fr       */
+/*   Created: 2022/06/04 22:35:35 by bede-car          #+#    #+#             */
+/*   Updated: 2022/06/26 05:18:23 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	i = 0;
-	if (s[i])
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (s < d)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		while (n--)
+			d[n] = s[n];
 	}
+	else
+	{
+		while (n--)
+			*d++ = *s++;
+	}
+	return (dest);
 }

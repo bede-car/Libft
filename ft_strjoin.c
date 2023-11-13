@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 02:32:23 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/25 21:33:02 by bede-car         ###   ########.fr       */
+/*   Created: 2022/06/17 04:29:20 by bede-car          #+#    #+#             */
+/*   Updated: 2022/06/26 04:55:44 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	n;
-	int	i;
-	int	s;
+	char	*new_str;
+	size_t	len_total;
 
-	n = 0;
-	i = 0;
-	s = 1;
-	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t' \
-	|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i++] == '-')
-			s *= -1;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-		n = (nptr[i++] - '0') + (n * 10);
-	return (n * s);
+	if (!s1 || !s2)
+		return (NULL);
+	len_total = (ft_strlen(s1) + ft_strlen(s2)) + 1;
+	new_str = malloc (len_total);
+	if (!new_str)
+		return (NULL);
+	ft_strlcpy(new_str, s1, (ft_strlen(s1) + 1));
+	ft_strlcat(new_str, s2, len_total);
+	return (new_str);
 }

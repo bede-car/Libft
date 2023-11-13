@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 20:20:45 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/25 22:34:42 by bede-car         ###   ########.fr       */
+/*   Created: 2022/06/26 02:42:35 by bede-car          #+#    #+#             */
+/*   Updated: 2022/06/26 05:01:34 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	**ft_split(char const *s, char c)
 	size_t	index;
 	size_t	pindex;
 
+	if (!s)
+		return (NULL);
 	index = 0;
 	pindex = 0;
 		qtdade_array = ft_count_split(s, c);

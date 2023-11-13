@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 00:10:26 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/25 22:30:55 by bede-car         ###   ########.fr       */
+/*   Updated: 2022/06/26 05:21:56 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	if (s[i])
 		write(fd, s, ft_strlen(s));
